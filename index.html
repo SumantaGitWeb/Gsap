@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP 3</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="flex justify-between mx-40">
+        <div class="flex my-20">
+            <div class="text-6xl font-black text-gray-800 text-center p-2">
+                <div id="text" class="st">The <span class="text-8xl text-red-400">World</span> Is Getting Animated!!</div>
+                <button id="rexe" class="text-blue-600 my-20 bg-purple-400 p-5 rounded-lg">Reverse!!</div>
+            </div>
+            <div class="st">
+                <img id="i" class="" style="width: 26em;" src="https://assets.telegraphindia.com/telegraph/abc10014-2683-416f-aed1-07f0343b1c42.jpg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="flex mt-20 justify-between mx-40">
+        <div class="flex my-20">
+            <div id="h" class="text-6xl font-black text-gray-800 text-center p-2">
+                <div id="text" class="st">You <span class="text-8xl text-red-400">Scrolled</span>?? I 'ANIMATED' It!!</div>
+            </div>
+            <div class="st">
+                <img id="m" class="" style="width: 26em;" src="https://images.pexels.com/photos/9166412/pexels-photo-9166412.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
+
+    <script>
+        // gsap.from('#text' ,{opacity: 0, duration: 1, y: -60})
+        // gsap.from('button' ,{delay: 1.5, opacity: 0, duration: 1, x: -60, ease: 'Bounce.easeOut'})
+        // gsap.from('img' ,{delay:1, opacity: 0, duration: 1, x: 60})
+
+        let tl = gsap.timeline({defaults:{duration:1}});
+        tl.from('#text' ,{opacity: 0, duration: 1, y: -60})
+            .from('button' ,{delay: 1.5, opacity: 0, duration: 1, x: -60, ease: 'Bounce.easeOut'}, "-=1.5")
+            .from('#i' ,{delay:1, opacity: 0, duration: 1, x: 60}, "-=1.2")
+
+            document.getElementById("rexe").addEventListener('click', () => {
+                tl.reverse();   
+            })
+
+            gsap.from('#h', {
+            scrollTrigger: '#h',
+            opacity: 0,
+            duration: 2,
+            y: 50,
+            x: 100
+        });
+        gsap.from('#m', {
+            scrollTrigger: '#m',
+            delay: 1,
+            opacity: 0,
+            duration: 3,
+            y: -50,
+            x: -200
+        });
+    </script>
+</body>
+</html>
